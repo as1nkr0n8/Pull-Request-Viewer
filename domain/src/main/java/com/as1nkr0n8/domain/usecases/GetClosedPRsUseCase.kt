@@ -1,5 +1,6 @@
 package com.as1nkr0n8.domain.usecases
 
+import com.as1nkr0n8.domain.common.InternalError
 import com.as1nkr0n8.domain.common.Result
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.domain.pull_request.PullRequestRepository
@@ -9,7 +10,7 @@ class GetClosedPRsUseCase(private val pullRequestRepository: PullRequestReposito
     companion object {
         const val TAG = "GetClosedPRsUseCase"
     }
-    suspend fun execute(): Result<List<PullRequestModel>> {
+    suspend fun execute(): Result<List<PullRequestModel>, InternalError> {
         //perform any validations
 
         //get data
