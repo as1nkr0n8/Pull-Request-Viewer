@@ -24,7 +24,7 @@ class RemoteGitRepoDataSource(private val gitRepoService: GitRepoService) {
                             //validation failed case
                             Result.Error(
                                 InternalError(
-                                    ErrorCodes.NETWORK_ERROR,
+                                    ErrorCodes.REQUEST_VALIDATION_ERROR,
                                     "validation failed"
                                 )
                             )
@@ -32,7 +32,7 @@ class RemoteGitRepoDataSource(private val gitRepoService: GitRepoService) {
                         else -> {
                             Result.Error(
                                 InternalError(
-                                    ErrorCodes.NETWORK_ERROR,
+                                    ErrorCodes.SERVER_ERROR,
                                     "unknown network error"
                                 )
                             )
@@ -43,7 +43,7 @@ class RemoteGitRepoDataSource(private val gitRepoService: GitRepoService) {
         } catch (ex: Exception) {
             Result.Error(
                 InternalError(
-                    ErrorCodes.UNKNOWN_ERROR,
+                    ErrorCodes.NETWORK_ERROR,
                     "unknown network error",
                     throwable = ex
                 )
