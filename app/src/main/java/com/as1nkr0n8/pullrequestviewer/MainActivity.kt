@@ -1,43 +1,33 @@
 package com.as1nkr0n8.pullrequestviewer
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.as1nkr0n8.pullrequestviewer.ui.theme.PullRequestViewerTheme
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.WindowCompat
+import androidx.recyclerview.widget.RecyclerView
+import com.as1nkr0n8.pullrequestviewer.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityMainBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
+        WindowCompat.setDecorFitsSystemWindows(window, false)
         super.onCreate(savedInstanceState)
-        setContent {
-            PullRequestViewerTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        setSupportActionBar(binding.toolbar)
+
+        val adapter = PullRequestModelAdapter(mutableListOf())
+        val recyclerView: RecyclerView = findViewById(R.id.prRecyclerView)
+        recyclerView.adapter = adapter
+
+        binding.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAnchorView(R.id.fab)
+                .setAction("Action", null).show()
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    PullRequestViewerTheme {
-        Greeting("Bhai bhai bhai")
     }
 }
