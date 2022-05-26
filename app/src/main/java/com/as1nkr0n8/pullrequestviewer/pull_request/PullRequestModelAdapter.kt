@@ -1,13 +1,14 @@
-package com.as1nkr0n8.pullrequestviewer
+package com.as1nkr0n8.pullrequestviewer.pull_request
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
+import com.as1nkr0n8.pullrequestviewer.R
 import com.as1nkr0n8.pullrequestviewer.databinding.PullRequestCardBinding
-import java.time.format.DateTimeFormatter
 
-class PullRequestModelAdapter(private val pullRequestList: MutableList<PullRequestModel>) : RecyclerView.Adapter<PullRequestModelAdapter.ViewHolder>() {
+class PullRequestModelAdapter(private val pullRequestList: MutableList<PullRequestModel>) :
+    RecyclerView.Adapter<PullRequestModelAdapter.ViewHolder>() {
 
     fun updateList(list: List<PullRequestModel>) {
         pullRequestList.clear()
@@ -26,20 +27,21 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
         fun bindModel(prModel: PullRequestModel) {
             title.text = prModel.title
             description.text = prModel.description
-            createdDate.text = prModel.createdDate.format(DateTimeFormatter.BASIC_ISO_DATE)
-            closedDate.text = prModel.closedDate.format(DateTimeFormatter.BASIC_ISO_DATE)
+            createdDate.text = prModel.createdDate
+            closedDate.text = prModel.closedDate
             userName.text = prModel.userName
-            if(prModel.userImageUrl.isEmpty()) {
+            if (prModel.userImageUrl.isEmpty()) {
                 userImageUrl.setImageResource(R.drawable.ic_launcher_foreground)
             } else {
                 //userImageUrl.setImageBitmap()
-                TODO("Set image")
+                //TODO("Set image")
             }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = PullRequestCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            PullRequestCardBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
