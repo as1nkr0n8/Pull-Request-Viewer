@@ -41,6 +41,7 @@ class RemoteGitRepoDataSource(private val gitRepoService: GitRepoService) {
                 }
             }
         } catch (ex: Exception) {
+            ex.printStackTrace()
             Result.Error(
                 InternalError(
                     ErrorCodes.NETWORK_ERROR,
