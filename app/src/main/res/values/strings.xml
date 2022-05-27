@@ -2,10 +2,16 @@
     <string name="app_name">Pull Request Viewer</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="content_description_image">User image</string>
+    <string name="prNumber">5</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
     <string name="date">28/07/1997</string>
     <string name="name">User Name</string>
     <string name="fabAction">Refresh</string>
     <string name="toolbar_title">Closed Pull Requests</string>
+    <string name="by">by</string>
+    <string name="createdAt">created at</string>
+    <string name="closedAt">closed at</string>
+    <string name="hashtag">#</string>
+    <string name="colon">:</string>
 </resources>

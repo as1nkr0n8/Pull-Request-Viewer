@@ -1,6 +1,7 @@
 package com.as1nkr0n8.pullrequestviewer.pull_request
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
@@ -17,6 +18,7 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
     }
 
     class ViewHolder(binding: PullRequestCardBinding) : RecyclerView.ViewHolder(binding.root) {
+        private val prNumber = binding.prNumber
         private val title = binding.title
         private val description = binding.description
         private val createdDate = binding.createdDate
@@ -25,8 +27,13 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
         private val userImageUrl = binding.userImage
 
         fun bindModel(prModel: PullRequestModel) {
+            prNumber.text = prModel.prNumber.toString()
             title.text = prModel.title
-            description.text = prModel.description
+            if (prModel.description.isEmpty()) {
+                description.visibility = View.INVISIBLE
+            } else {
+                description.text = prModel.description
+            }
             createdDate.text = prModel.createdDate
             closedDate.text = prModel.closedDate
             userName.text = prModel.userName

@@ -45,10 +45,19 @@ class MainActivity : AppCompatActivity() {
         }
         pullRequestViewModel.errorEvent.observe(this) { error ->
             val snackBar =
-                Snackbar.make(binding.root, "${error.code}: ${error.message}", Snackbar.LENGTH_INDEFINITE)
+                Snackbar.make(
+                    binding.root,
+                    "${error.code}: ${error.message}",
+                    Snackbar.LENGTH_INDEFINITE
+                )
                     .setAnchorView(R.id.fab)
             snackBar.setAction("Close") { snackBar.dismiss() }
             snackBar.show()
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        pullRequestViewModel.getClosedPRs()
     }
 }
