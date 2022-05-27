@@ -11,9 +11,7 @@ import com.as1nkr0n8.domain.common.InternalError
 import com.as1nkr0n8.domain.common.Result
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.domain.usecases.GetClosedPRsUseCase
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 class PullRequestViewModel(val useCase: GetClosedPRsUseCase) : ViewModel() {
     val list = MutableLiveData<List<PullRequestModel>>()
@@ -21,7 +19,7 @@ class PullRequestViewModel(val useCase: GetClosedPRsUseCase) : ViewModel() {
 
     fun getClosedPRs() {
         viewModelScope.launch {
-            when (val result = withContext(Dispatchers.IO) { useCase.execute() }) {
+            when (val result = useCase.execute()) {
                 is Result.Success -> {
                     list.postValue(result.data)
                 }
