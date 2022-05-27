@@ -14,7 +14,6 @@ import org.junit.Test
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
-import java.time.OffsetDateTime
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetClosedPRsUseCaseTest {
@@ -39,8 +38,8 @@ class GetClosedPRsUseCaseTest {
                             title = "Title",
                             description = "",
                             state = PullRequestState.CLOSED,
-                            createdDate = OffsetDateTime.now(),
-                            closedDate = OffsetDateTime.now(),
+                            createdDate = "",
+                            closedDate = "",
                             userName = "username",
                             userImageUrl = ""
                         )

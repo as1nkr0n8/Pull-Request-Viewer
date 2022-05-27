@@ -15,7 +15,6 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import retrofit2.Response
 import java.io.IOException
-import java.time.OffsetDateTime
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RemoteGitRepoDataSourceTest {
@@ -40,9 +39,9 @@ class RemoteGitRepoDataSourceTest {
                                 1,
                                 "title",
                                 "desc",
-                                PullRequestState.CLOSED,
-                                OffsetDateTime.now(),
-                                OffsetDateTime.now(),
+                                PRState.CLOSED,
+                                "",
+                                "",
                                 UserInfo("name", "url")
                             )
                         )
