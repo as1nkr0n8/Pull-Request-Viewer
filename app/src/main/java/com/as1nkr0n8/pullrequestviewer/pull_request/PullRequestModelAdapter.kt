@@ -7,13 +7,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.pullrequestviewer.R
 import com.as1nkr0n8.pullrequestviewer.databinding.PullRequestCardBinding
+import com.bumptech.glide.Glide
 
 class PullRequestModelAdapter(private val pullRequestList: MutableList<PullRequestModel>) :
     RecyclerView.Adapter<PullRequestModelAdapter.ViewHolder>() {
 
     fun updateList(list: List<PullRequestModel>) {
+        clear()
+        pullRequestList.addAll(list.sortedBy { it.prNumber })
+        notifyDataSetChanged()
+    }
+
+    fun clear() {
         pullRequestList.clear()
-        pullRequestList.addAll(list)
         notifyDataSetChanged()
     }
 
@@ -24,7 +30,7 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
         private val createdDate = binding.createdDate
         private val closedDate = binding.closedDate
         private val userName = binding.userName
-        private val userImageUrl = binding.userImage
+        private val userImageView = binding.userImage
 
         fun bindModel(prModel: PullRequestModel) {
             prNumber.text = prModel.prNumber.toString()
@@ -38,10 +44,12 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
             closedDate.text = prModel.closedDate
             userName.text = prModel.userName
             if (prModel.userImageUrl.isEmpty()) {
-                userImageUrl.setImageResource(R.drawable.ic_launcher_foreground)
+                userImageView.setImageResource(R.drawable.ic_launcher_foreground)
             } else {
-                //userImageUrl.setImageBitmap()
-                //TODO("Set image")
+                Glide.with(userImageView.context)
+                    .load(prModel.userImageUrl)
+                    .centerCrop()
+                    .into(userImageView)
             }
         }
     }

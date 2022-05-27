@@ -35,7 +35,8 @@ class MainActivity : AppCompatActivity() {
             this.layoutManager = LinearLayoutManager(context)
         }
 
-        binding.fab.setOnClickListener {
+        binding.refreshData.setOnClickListener {
+            adapter.clear()
             pullRequestViewModel.getClosedPRs()
         }
 
@@ -50,7 +51,7 @@ class MainActivity : AppCompatActivity() {
                     "${error.code}: ${error.message}",
                     Snackbar.LENGTH_INDEFINITE
                 )
-                    .setAnchorView(R.id.fab)
+                    .setAnchorView(R.id.refreshData)
             snackBar.setAction("Close") { snackBar.dismiss() }
             snackBar.show()
         }
