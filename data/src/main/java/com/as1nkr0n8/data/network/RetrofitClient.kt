@@ -9,12 +9,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient {
     companion object {
-        private const val BASE_URL = "https://api.github.com/"
-
-        private var instance: GitRepoService? = null
+        private var instance: Retrofit? = null
 
         @Synchronized
-        fun getServiceInstance(): GitRepoService {
+        fun buildInstance(repoUrl: String): Retrofit {
             return instance ?: kotlin.run {
                 val gsonInstance = GsonBuilder()
                     .setDateFormat("yyyy-MM-dd'T'HH:mm:ssZ")//2011-04-10T20:09:31Z
@@ -24,13 +22,16 @@ class RetrofitClient {
                         level = HttpLoggingInterceptor.Level.BODY
                     }).build()
                 instance = Retrofit.Builder()
-                    .baseUrl(BASE_URL)
+                    .baseUrl(repoUrl)
                     .addConverterFactory(GsonConverterFactory.create(gsonInstance))
                     .client(okHttpClient)
                     .build()
-                    .create(GitRepoService::class.java)
                 instance!!
             }
+        }
+
+        fun getGitRepoService(): GitRepoService {
+            return instance!!.create(GitRepoService::class.java) // app onCreate ensures the instance is created, so !!
         }
     }
 }

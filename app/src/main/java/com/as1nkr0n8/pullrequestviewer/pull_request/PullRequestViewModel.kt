@@ -34,12 +34,11 @@ class PullRequestViewModelFactory : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(PullRequestViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            //TODO: Rework the creation
             return PullRequestViewModel(
                 useCase = GetClosedPRsUseCase(
                     PullRequestRepositoryImpl(
                         RemoteGitRepoDataSource(
-                            RetrofitClient.getServiceInstance()
+                            RetrofitClient.getGitRepoService()
                         )
                     )
                 )
