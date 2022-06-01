@@ -39,7 +39,7 @@ class PullRequestViewModelFactory : ViewModelProvider.Factory {
                 useCase = GetClosedPRsUseCase(
                     PullRequestRepositoryImpl(
                         RemoteGitRepoDataSource(
-                            RetrofitClient.getServiceInstance()
+                            RetrofitClient.getGitRepoService()
                         )
                     )
                 )
