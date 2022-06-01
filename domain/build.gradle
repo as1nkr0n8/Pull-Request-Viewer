@@ -8,6 +8,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+}
+
 dependencies {
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.1'
 

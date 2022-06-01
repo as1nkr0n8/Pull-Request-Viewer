@@ -8,6 +8,12 @@ java {
     targetCompatibility = JavaVersion.VERSION_11
 }
 
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs += "-opt-in=kotlin.RequiresOptIn"
+    }
+}
+
 dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
