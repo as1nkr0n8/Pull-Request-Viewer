@@ -105,7 +105,7 @@
                         android:paddingEnd="2dp"
                         android:text="@string/name"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/purple_700" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -131,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/date"
                         android:textAppearance="?attr/textAppearanceCaption"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/purple_500" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
@@ -157,15 +157,16 @@
                         android:layout_height="wrap_content"
                         android:text="@string/date"
                         android:textAppearance="?attr/textAppearanceCaption"
-                        android:textColor="?android:attr/textColorSecondary" />
+                        android:textColor="@color/purple_500" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
-
+                <!--setting gone to remove the view from the screen, can be added back when required-->
                 <TextView
                     android:id="@+id/description"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="@string/description"
+                    android:visibility="gone"
                     android:textAppearance="?attr/textAppearanceBody2"
                     android:textColor="?android:attr/textColorSecondary" />
 

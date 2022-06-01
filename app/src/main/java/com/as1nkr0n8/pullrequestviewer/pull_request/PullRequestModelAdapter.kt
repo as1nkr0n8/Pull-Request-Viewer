@@ -36,7 +36,7 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
             prNumber.text = prModel.prNumber.toString()
             title.text = prModel.title
             if (prModel.description.isEmpty()) {
-                description.visibility = View.INVISIBLE
+                description.visibility = View.GONE
             } else {
                 description.text = prModel.description
             }
