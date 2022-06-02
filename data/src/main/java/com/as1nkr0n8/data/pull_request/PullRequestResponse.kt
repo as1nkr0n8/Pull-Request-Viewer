@@ -3,6 +3,7 @@ package com.as1nkr0n8.data.pull_request
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.domain.pull_request.PullRequestState
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class PullRequestResponse(
     @SerializedName("number")
@@ -14,9 +15,9 @@ data class PullRequestResponse(
     @SerializedName("state")
     val state: PRState,
     @SerializedName("created_at")
-    val createdDate: String,
+    val createdDate: Date,
     @SerializedName("closed_at")
-    val closedDate: String,
+    val closedDate: Date,
     @SerializedName("user")
     val userInfo: UserInfo
 )

@@ -9,9 +9,14 @@ import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.pullrequestviewer.R
 import com.as1nkr0n8.pullrequestviewer.databinding.PullRequestCardBinding
 import com.bumptech.glide.Glide
+import java.text.SimpleDateFormat
+import java.util.*
 
 class PullRequestModelAdapter(private val pullRequestList: MutableList<PullRequestModel>) :
     RecyclerView.Adapter<PullRequestModelAdapter.PRViewHolder>() {
+    companion object {
+        val DATE_FORMAT = SimpleDateFormat("dd-MMMM-yy hh:mm:ss aa", Locale.ENGLISH)
+    }
 
     fun updateList(list: List<PullRequestModel>) {
         pullRequestList.clear()
@@ -40,8 +45,8 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
             prNumber.text = prModel.prNumber.toString()
             title.text = prModel.title
             description.text = prModel.description
-            createdDate.text = prModel.createdDate
-            closedDate.text = prModel.closedDate
+            createdDate.text = DATE_FORMAT.format(prModel.createdDate)
+            closedDate.text = DATE_FORMAT.format(prModel.closedDate)
             userName.text = prModel.userName
             if (prModel.userImageUrl.isEmpty()) {
                 userImageView.setImageResource(R.drawable.ic_launcher_foreground)
