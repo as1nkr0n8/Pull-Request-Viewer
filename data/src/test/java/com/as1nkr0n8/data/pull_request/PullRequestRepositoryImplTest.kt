@@ -12,6 +12,7 @@ import org.junit.Test
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import java.util.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PullRequestRepositoryImplTest {
@@ -33,8 +34,8 @@ class PullRequestRepositoryImplTest {
                 "title",
                 "desc",
                 PRState.CLOSED,
-                "",
-                "",
+                Date(),
+                Date(),
                 UserInfo("name", "url")
             )
         )

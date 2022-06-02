@@ -17,6 +17,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.rules.TestRule
 import org.mockito.kotlin.*
+import java.util.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class PullRequestViewModelTest {
@@ -43,8 +44,8 @@ class PullRequestViewModelTest {
                 title = "Title",
                 description = "",
                 state = PullRequestState.CLOSED,
-                createdDate = "",
-                closedDate = "",
+                createdDate = Date(),
+                closedDate = Date(),
                 userName = "username",
                 userImageUrl = ""
             )

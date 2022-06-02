@@ -15,6 +15,7 @@ import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import retrofit2.Response
 import java.io.IOException
+import java.util.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class RemoteGitRepoDataSourceTest {
@@ -40,8 +41,8 @@ class RemoteGitRepoDataSourceTest {
                                 "title",
                                 "desc",
                                 PRState.CLOSED,
-                                "",
-                                "",
+                                Date(),
+                                Date(),
                                 UserInfo("name", "url")
                             )
                         )
