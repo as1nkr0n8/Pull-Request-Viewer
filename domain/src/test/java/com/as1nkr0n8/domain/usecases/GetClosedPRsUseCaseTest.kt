@@ -14,6 +14,7 @@ import org.junit.Test
 import org.mockito.kotlin.eq
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
+import java.util.*
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class GetClosedPRsUseCaseTest {
@@ -38,8 +39,8 @@ class GetClosedPRsUseCaseTest {
                             title = "Title",
                             description = "",
                             state = PullRequestState.CLOSED,
-                            createdDate = "",
-                            closedDate = "",
+                            createdDate = Date(),
+                            closedDate = Date(),
                             userName = "username",
                             userImageUrl = ""
                         )
