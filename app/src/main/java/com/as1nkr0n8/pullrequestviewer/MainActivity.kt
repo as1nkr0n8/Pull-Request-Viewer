@@ -36,11 +36,14 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.refreshData.setOnClickListener {
-            adapter.clear()
             pullRequestViewModel.getClosedPRs()
         }
 
         //set observers
+        setupObservers(adapter)
+    }
+
+    private fun setupObservers(adapter: PullRequestModelAdapter) {
         pullRequestViewModel.list.observe(this) { list ->
             adapter.updateList(list)
         }
@@ -50,8 +53,7 @@ class MainActivity : AppCompatActivity() {
                     binding.root,
                     "${error.code}: ${error.message}",
                     Snackbar.LENGTH_INDEFINITE
-                )
-                    .setAnchorView(R.id.refreshData)
+                ).setAnchorView(R.id.refreshData)
             snackBar.setAction("Close") { snackBar.dismiss() }
             snackBar.show()
         }

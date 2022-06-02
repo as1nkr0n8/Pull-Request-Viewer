@@ -6,6 +6,7 @@
     android:layout_height="wrap_content">
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/prCard"
         style="?attr/materialCardViewElevatedStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,16 +19,16 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="1">
+            android:orientation="horizontal">
 
             <!-- Media -->
             <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/userImage"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.75"
+                android:layout_weight="2"
                 android:contentDescription="@string/content_description_image"
+                android:layout_gravity="center_vertical"
                 android:scaleType="centerCrop"
                 android:adjustViewBounds="true"
                 app:srcCompat="@drawable/ic_launcher_foreground" />
@@ -39,10 +40,11 @@
                 android:padding="2dp" />
 
             <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.25"
+                android:layout_weight="5"
                 android:orientation="vertical"
+                android:gravity="center_vertical"
                 android:padding="8dp">
 
                 <!-- Title, secondary and supporting text -->
@@ -105,7 +107,7 @@
                         android:paddingEnd="2dp"
                         android:text="@string/name"
                         android:textAppearance="?attr/textAppearanceSubtitle2"
-                        android:textColor="@color/purple_700" />
+                        android:textColor="@color/teal_700" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
