@@ -5,10 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
+import coil.dispose
+import coil.load
 import com.as1nkr0n8.domain.pull_request.PullRequestModel
 import com.as1nkr0n8.pullrequestviewer.R
 import com.as1nkr0n8.pullrequestviewer.databinding.PullRequestCardBinding
-import com.bumptech.glide.Glide
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -51,10 +52,7 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
             if (prModel.userImageUrl.isEmpty()) {
                 userImageView.setImageResource(R.drawable.ic_launcher_foreground)
             } else {
-                Glide.with(userImageView.context)
-                    .load(prModel.userImageUrl)
-                    .centerCrop()
-                    .into(userImageView)
+                userImageView.load(prModel.userImageUrl)
             }
         }
     }
@@ -75,6 +73,6 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
 
     override fun onViewRecycled(holder: PRViewHolder) {
         super.onViewRecycled(holder)
-        Glide.with(holder.userImageView.context).clear(holder.userImageView)
+        holder.userImageView.dispose()
     }
 }
