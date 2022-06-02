@@ -20,8 +20,12 @@ class PullRequestModelAdapter(private val pullRequestList: MutableList<PullReque
     }
 
     fun updateList(list: List<PullRequestModel>) {
-        pullRequestList.clear()
         pullRequestList.addAll(list.sortedBy { it.prNumber })
+        notifyDataSetChanged()
+    }
+
+    fun clearList() {
+        pullRequestList.clear()
         notifyDataSetChanged()
     }
 

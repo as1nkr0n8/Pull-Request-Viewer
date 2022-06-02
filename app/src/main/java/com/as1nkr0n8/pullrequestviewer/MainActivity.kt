@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.refreshData.setOnClickListener {
+            adapter.clearList()
             pullRequestViewModel.getClosedPRs()
         }
 
